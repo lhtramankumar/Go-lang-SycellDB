@@ -1,0 +1,38 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type BookListing {
+  _id: ID!
+  title: String!
+  bookname :String!
+  description: String!
+  author: String!
+}
+
+type file {
+  id: ID!
+  x_axis: Int!
+  y_axis: Int!
+  zone_name: String!
+  club_id:ID!
+  fileUrl: String!
+}
+
+
+type Query{
+  books: [BookListing!]!
+  readFile(fileUrl: String!): file!
+
+}
+
+type Mutation {
+  createBookListing(input: CreateBookListingInput!): BookListing!
+}
+
+input CreateBookListingInput {
+  title: String!
+  description: String!
+  bookname : String!
+  author: String!
+}

@@ -1,0 +1,70 @@
+1. Create a new folder for the Project
+
+   `mkdir go-gqlgen`
+
+2. Mod init your project, give it whatever name you like
+
+   `go mod init go-gqlgen`
+
+3. Get gql gen for your project
+
+   `go get github.com/99designs/gqlgen`
+
+4. Add gqlgen to tools.go
+
+   `printf '// +build tools\npackage tools\nimport _ "github.com/99designs/gqlgen"' | gofmt > tools.go`
+
+5. Get all the dependencies
+
+   `go mod tidy`
+
+6. Initialize your project
+
+   `go run github.com/99designs/gqlgen init`
+
+7. After you've written the graphql schema, run this - `go run github.com/99designs/gqlgen generate`
+
+8. To run the project - `go run ./server.go`
+
+
+
+
+createbooklistening graphql request data 
+
+
+mutation createBookListing($book: CreateBookListingInput!)
+{
+  createBookListing(input: $book) {
+    _id
+    title
+    bookname
+    description
+    author
+  }
+}
+
+{
+  "book": {
+    "title": "Story of Ram and Ravan",
+    "bookname": "mahabharat",
+    "description": "Read carefully",
+    "author": "Valmiki"
+  }
+}
+
+
+#books 
+
+query {
+  books {
+        _id
+    title
+    bookname
+    description
+    author
+  }
+}
+
+
+
+
